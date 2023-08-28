@@ -47,6 +47,8 @@ app.use("/auth", require("./routes/authRoutes"))
 app.use("/cart", isAuth(), require("./routes/cartRoutes"))
 app.use("/orders", isAuth(), require("./routes/orderRoutes"))
 
+app.get("*",(req,res)=>res.sendFile(path.resolve('dist','index.html')))
+
 //passport authentication
 passport.use('local', new LocalStrategy({
   usernameField: 'email',
